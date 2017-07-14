@@ -23,7 +23,7 @@ freeze:
 	@docker run -it --rm --name $(CONTAINER_NAME) $(IMAGE_NAME) pip freeze
 
 tests:
-	@printf "$(COLOR)==> Checking python dependencies installed in the image ...$(NO_COLOR)\n"
+	@printf "$(COLOR)==> Running suite test with nose ...$(NO_COLOR)\n"
 	@docker run -it --rm --name $(CONTAINER_NAME) -v $(PWD):/src/py-config $(IMAGE_NAME) \
 	nosetests --nocapture --nologcapture --detailed-errors --verbosity=2 --traverse-namespace \
 	--with-coverage --cover-erase --cover-package=pyconfig --rednose /src/py-config/tests
